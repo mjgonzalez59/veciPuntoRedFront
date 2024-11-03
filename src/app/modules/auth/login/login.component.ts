@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private _router: Router,
   ) {}
 
   ngOnInit() {
@@ -25,8 +27,11 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe(
-        (success) => console.log('Login successful'),
-        (error) => console.error('Login failed')
+        (success) => {
+          console.log('Login successful', success);
+          this._router.navigate(['/top-up']);
+        },
+        (error) => console.error('Login failed', error)
       );
     }
   }

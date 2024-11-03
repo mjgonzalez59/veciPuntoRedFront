@@ -1,0 +1,88 @@
+<div class="min-h-screen bg-white">
+  <nav class="bg-[#8A2BE2] text-white p-4">
+    <div class="container mx-auto flex items-center justify-between">
+      <span class="text-xl font-bold">VECI</span>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white/80">Inicio</a>
+        <a href="#" class="hover:text-white/80">Servicios</a>
+        <a href="#" class="hover:text-white/80">Transacciones</a>
+        <a href="#" class="hover:text-white/80">Perfil</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto p-6 grid md:grid-cols-2 gap-8 items-start">
+    <section class="space-y-6">
+      <h2 class="text-2xl font-semibold text-gray-900">Nuestros servicios</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <!-- {[ { icon: <MessageCircle class="w-6 h-6" />, label: "Chat veci" },
+        { icon: <Gift class="w-6 h-6" />, label: "Cobra QR" }, { icon:
+        <FileText class="w-6 h-6" />, label: "Lista de pago" }, { icon:
+        <CreditCard class="w-6 h-6" />, label: "Debitivo" }, { icon:
+        <PhoneCall class="w-6 h-6" />, label: "Recargas" }, { icon:
+        <Banknote class="w-6 h-6" />, label: "Factura" }, ].map((service,
+        index) => ( -->
+        <div
+          key="{index}"
+          class="group cursor-pointer hover:bg-[#8A2BE2]/5 transition-colors"
+        >
+          <div class="p-4 text-center space-y-2">
+            <div
+              class="mx-auto w-12 h-12 rounded-full bg-[#8A2BE2]/10 flex items-center justify-center text-[#8A2BE2] group-hover:bg-[#8A2BE2]/20"
+            >
+              <!-- {service.icon} -->
+            </div>
+            <p
+              class="text-sm font-medium text-gray-600 group-hover:text-[#8A2BE2]"
+            >
+              <!-- {service.label} -->
+            </p>
+          </div>
+        </div>
+        <!-- ))} -->
+      </div>
+    </section>
+
+    <div class="w-full max-w-md mx-auto border-2 border-gray rounded-lg p-7">
+      <div class="text-3xl font-bold pb-5">Recargas móviles</div>
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <label>Operador</label>
+          <!-- <Select defaultValue="claro">
+            <SelectTrigger id="operator">
+              <SelectValue placeholder="Seleccionar operador" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="claro">Claro</SelectItem>
+              <SelectItem value="movistar">Movistar</SelectItem>
+              <SelectItem value="tigo">Tigo</SelectItem>
+            </SelectContent>
+          </Select> -->
+          
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label>Número de celular</label>
+          <input
+            type="tel"
+            placeholder="Ingresa el número"
+            class="px-4 py-2 border-2 border-gray rounded-lg"
+          />
+        </div>
+
+        <div class="flex flex-col space-y-2">
+          <label>Valor</label>
+          <input
+            type="number"
+            placeholder="$0"
+            class="px-4 py-2 border-2 border-gray rounded-lg"
+          />
+        </div>
+
+        <Button class="w-full bg-[#8A2BE2] hover:bg-[#8A2BE2]/90 rounded-lg py-3 text-white">
+          Continuar
+        </Button>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,11 +1,76 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="user">User:</label>
-    <input id="user" formControlName="user" />
+<div
+  class="min-h-screen w-full flex items-center justify-center"
+  style="
+    background-image: url('assets/images/Fondo-azul-con-logo-de-veci.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  "
+>
+  <div class="w-full max-w-4xl grid md:grid-cols-2 overflow-hidden">
+    <div class="flex flex-col bg-white p-6 space-y-6 justify-center items-center">
+      <div class="p-0 pb-6">
+        <div class="text-3xl font-bold">Iniciar Sesión</div>
+      </div>
+      <form class="p-0 w-4/5" [formGroup]="loginForm">
+        <div class="space-y-4">
+          <div class="flex flex-col space-y-2">
+            <label class="text-xs font-bold">Username</label>
+            <input
+              class="px-4 py-2 border-2 border-purple-500 rounded-full"
+              formControlName="user"
+              placeholder="Enter your username"
+              required
+              type="text"
+            />
+          </div>
+          <div class="flex flex-col space-y-2 pb-8">
+            <label class="text-xs font-bold">Contraseña</label>
+            <input
+              class="px-4 py-2 border-2 border-purple-500 rounded-full"
+              formControlName="password"
+              placeholder="Enter your password"
+              required
+              type="password"
+            />
+          </div>
+          <button
+            class="w-full bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-full"
+            type="button"
+            (click)="onSubmit()"
+          >
+            Iniciar sesión
+          </button>
+          <div class="text-center">
+            <a
+              href="#"
+              class="text-sm text-purple-600 hover:text-purple-700 hover:underline"
+            >
+              Registrarse
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div
+      class="relative bg-sky-400 p-6 flex flex-col justify-center text-white hidden md:flex"
+    >
+      <div class="space-y-4 text-center pt-4">
+        <h2 class="text-2xl font-bold px-4">
+          Vect es la nueva app con todas las soluciones para ti y para tu
+          negocio
+        </h2>
+        <p class="text-sky-100 px-4">
+          Gestiona tus recargas telefónicas de manera fácil y segura
+        </p>
+      </div>
+
+      <img
+        src="assets/images/imagen-entregamos-tienda-virtual.webp"
+        alt="Background Image"
+        class="background-image object-contain h-60"
+      />
+    </div>
   </div>
-  <div>
-    <label for="password">Password:</label>
-    <input id="password" formControlName="password" type="password" />
-  </div>
-  <button type="submit">Login</button>
-</form>
+</div>
