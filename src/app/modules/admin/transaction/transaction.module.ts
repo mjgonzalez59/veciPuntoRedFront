@@ -8,12 +8,17 @@ import { SharedModule } from '../../shared/shared.module';
 import { OfficeComponent } from './components/office/office.component';
 import { MobileOperatorsComponent } from './components/mobile-operators/mobile-operators.component';
 import { SendMessageComponent } from './components/send-message/send-message.component';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   imports: [
     CommonModule,
     TransactionRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
+    MatSelectModule,
   ],
   declarations: [
     TransactionComponent,
@@ -21,7 +26,7 @@ import { SendMessageComponent } from './components/send-message/send-message.com
     ServiceCardComponent,
     OfficeComponent,
     MobileOperatorsComponent,
-    SendMessageComponent
+    SendMessageComponent,
   ],
 })
 export class TransactionModule {}
