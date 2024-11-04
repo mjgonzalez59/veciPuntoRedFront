@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthenticationService,
+    private _authService: AuthenticationService,
     private _router: Router,
   ) {}
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(
+      this._authService.login(this.loginForm.value).subscribe(
         (success) => {
           console.log('Login successful', success);
           this._router.navigate(['/recharge']);

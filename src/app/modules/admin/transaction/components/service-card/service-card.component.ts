@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-card',
@@ -11,13 +12,17 @@ export class ServiceCardComponent implements OnInit {
   @Input() text: string;
 
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
   showComponent(){
-    this.serviceName.emit(this.iconName);
+    if(this.iconName === 'description' || this.iconName === 'receipt'){
+      this._router.navigate(['/transactions']);
+    }else{
+      this.serviceName.emit(this.iconName);
+    }
   }
 
 }

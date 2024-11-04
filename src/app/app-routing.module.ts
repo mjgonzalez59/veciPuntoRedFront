@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   // { path: 'recharge', component: TransactionComponent },
   { path: 'recharge', loadChildren: () => import('./modules/admin/transaction/transaction.module').then(m => m.TransactionModule) },
+  { path: 'transactions', loadChildren: () => import('./modules/admin/transaction-list/transaction-list.module').then(m => m.TransactionListModule) },
   { path: '**', redirectTo: '/login' }
 ];
 
