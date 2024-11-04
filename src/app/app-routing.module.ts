@@ -8,8 +8,9 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   // { path: 'recharge', component: TransactionComponent },
-  { path: 'recharge', loadChildren: () => import('./modules/admin/transaction/transaction.module').then(m => m.TransactionModule) },
+  { path: 'services', loadChildren: () => import('./modules/admin/transaction/transaction.module').then(m => m.TransactionModule) },
   { path: 'transactions', loadChildren: () => import('./modules/admin/transaction-list/transaction-list.module').then(m => m.TransactionListModule) },
+  { path: 'home', loadChildren: () => import('./modules/admin/home/home.module').then(m => m.HomeModule) },
   { path: '**', redirectTo: '/login' }
 ];
 
