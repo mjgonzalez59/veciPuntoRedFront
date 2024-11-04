@@ -10,7 +10,10 @@ import { MobileOperatorsComponent } from './components/mobile-operators/mobile-o
 import { SendMessageComponent } from './components/send-message/send-message.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { InputMaskModule } from '@ngneat/input-mask';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -19,6 +22,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     SharedModule,
     MatSelectModule,
+    InputMaskModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   declarations: [
     TransactionComponent,

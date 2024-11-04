@@ -1,21 +1,34 @@
 <div class="w-full max-w-md mx-auto border-2 border-gray rounded-lg p-7">
   <div class="text-3xl font-bold pb-5">Recargas móviles</div>
-  <div class="space-y-2">
+  <form [formGroup]="transactionForm" class="space-y-2">
     <div class="flex flex-col space-y-2">
       <label>Número de celular</label>
       <input
-        matInput
-        type="tel"
-        placeholder="Ingresa el número"
+        [inputMask]="phoneM"
+        formControlName="phoneNumber"
+        placeholder="3_________"
         class="px-4 py-2 border border-gray rounded-lg"
       />
     </div>
 
+    <!-- <mat-form-field class="fuse-mat-dense flex-auto w-1/4">
+      <mat-label>Valor Servicio</mat-label>
+      <input
+          matInput
+          formControlName="serviceFee"
+          [inputMask]="currencyM"
+          max="9999999999"
+      />
+      <mat-error *ngIf="formRequest.get('serviceFee').hasError('required')">
+          Este campo es obligatorio
+      </mat-error>
+    </mat-form-field> -->
+
     <div class="flex flex-col space-y-2">
       <label>Valor</label>
       <input
-        matInput
-        type="number"
+        formControlName="value"
+        [inputMask]="currencyM"
         placeholder="$0"
         class="px-4 py-2 border border-gray rounded-lg"
       />
@@ -24,7 +37,7 @@
     <div class="flex flex-col space-y-2">
       <label>Operador</label>
       <mat-form-field class="w-full" appearance="outline">
-        <mat-select class="rounded-lg">
+        <mat-select class="rounded-lg" formControlName="mobileSupplier">
           <mat-option *ngFor="let supplier of suppliers" [value]="supplier.id">
             {{ supplier.name }}
           </mat-option>
@@ -32,10 +45,11 @@
       </mat-form-field>
     </div>
 
-    <Button
+    <button
+      (click)="send()"
       class="w-full bg-[#8A2BE2] hover:bg-[#8A2BE2]/90 rounded-lg py-3 text-white"
     >
       Continuar
-    </Button>
-  </div>
+    </button>
+  </form>
 </div>

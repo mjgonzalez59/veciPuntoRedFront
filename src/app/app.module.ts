@@ -9,6 +9,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { SharedModule } from './modules/shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { InputMaskModule } from '@ngneat/input-mask';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     HttpClientModule,
     SharedModule,
     BrowserAnimationsModule,
+    InputMaskModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
