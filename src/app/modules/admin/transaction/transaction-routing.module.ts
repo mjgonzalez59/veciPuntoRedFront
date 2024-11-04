@@ -1,12 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { TopUpComponent } from './top-up.component';
+import { TopUpComponent } from './components/top-up/top-up.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
 
 const routes: Routes = [
   {
-    path: 'top-up',
+    path: '',
     //   canActivate: [ AccessGuard ],
-    component: TopUpComponent,
+    component: TransactionComponent,
   },
 ];
 

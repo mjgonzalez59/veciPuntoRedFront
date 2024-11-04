@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value).subscribe(
         (success) => {
           console.log('Login successful', success);
-          this._router.navigate(['/top-up']);
+          this._router.navigate(['/recharge']);
         },
         (error) => console.error('Login failed', error)
       );
