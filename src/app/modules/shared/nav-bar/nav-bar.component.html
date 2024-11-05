@@ -1,13 +1,22 @@
-<nav class="bg-[#8A2BE2] text-white">
+<nav
+  class="bg-gradient-to-r from-purple-600 to-cyan-400 text-white"
+  *ngIf="isAuthenticated"
+>
   <div class="container mx-auto flex items-center justify-between">
     <span class="text-xl font-bold">
-      <img src="assets/images/logo/logo.svg" alt="claro" class="object-contain h-20 w-20" />
+      <img
+        src="assets/images/logo/logo.svg"
+        alt="claro"
+        class="object-contain h-20 w-20"
+      />
     </span>
     <div class="flex gap-6">
       <a href="/home" class="hover:text-white/80">Inicio</a>
       <a href="/services" class="hover:text-white/80">Servicios</a>
       <a href="/transactions" class="hover:text-white/80">Transacciones</a>
-      <a href="#" class="hover:text-white/80">Perfil</a>
+      <a href="/login" class="hover:text-white/80" (click)="logout()"
+        >Cerrar sesión</a
+      >
     </div>
   </div>
 </nav>

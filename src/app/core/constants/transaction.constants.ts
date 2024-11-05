@@ -1,4 +1,4 @@
-import { createMask } from "@ngneat/input-mask";
+import { createMask } from '@ngneat/input-mask';
 
 export const services = [
   {
@@ -49,5 +49,5 @@ export const currencyMask = createMask({
 });
 
 export const phoneMask = createMask({
-  mask: '3999999999'
+  mask: '3999999999',
 });

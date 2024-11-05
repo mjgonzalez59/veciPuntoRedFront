@@ -21,13 +21,9 @@ export class AuthInterceptor implements HttpInterceptor {
     const clonedRequest = request.clone({
       setHeaders: {
         'x-api-key': apiKey,
-        'Authorization': "Bearer e8797850-95bb-4ca1-ac52-c99dd3c3cbad",
+        Authorization: 'Bearer e8797850-95bb-4ca1-ac52-c99dd3c3cbad',
       },
     });
-
-    // console.log(clonedRequest);
-    
-
     return next.handle(clonedRequest);
   }
 }

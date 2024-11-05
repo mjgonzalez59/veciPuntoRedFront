@@ -19,7 +19,7 @@ export class SingleTransactionComponent implements OnInit {
 
   ngOnInit() {}
 
-  goBack(){
+  goBack() {
     this._router.navigate([`/transactions`]);
   }
 }

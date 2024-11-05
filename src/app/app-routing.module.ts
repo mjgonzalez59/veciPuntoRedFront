@@ -1,17 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
-// import { TopUpComponent } from './modules/admin/transaction/components/top-up/top-up.component';
-import { TransactionComponent } from './modules/admin/transaction/components/transaction/transaction.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  // { path: 'recharge', component: TransactionComponent },
-  { path: 'services', loadChildren: () => import('./modules/admin/transaction/transaction.module').then(m => m.TransactionModule) },
-  { path: 'transactions', loadChildren: () => import('./modules/admin/transaction-list/transaction-list.module').then(m => m.TransactionListModule) },
-  { path: 'home', loadChildren: () => import('./modules/admin/home/home.module').then(m => m.HomeModule) },
-  { path: '**', redirectTo: '/login' }
+  {
+    path: 'services',
+    loadChildren: () =>
+      import('./modules/admin/transaction/transaction.module').then(
+        (m) => m.TransactionModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'transactions',
+    loadChildren: () =>
+      import('./modules/admin/transaction-list/transaction-list.module').then(
+        (m) => m.TransactionListModule
+      ),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/admin/home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
+  },
+  { path: '**', redirectTo: '/login' },
 ];
 
 @NgModule({

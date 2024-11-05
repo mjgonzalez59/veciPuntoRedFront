@@ -1,8 +1,11 @@
-<div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 cursor-pointer" (click)="showComponent();">
+<div
+  class="flex flex-col items-center p-4 bg-white rounded-lg shadow-md w-32 cursor-pointer"
+  (click)="showComponent()"
+>
   <div
     class="flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-2"
   >
-    <i class="material-icons-outlined custom-icon-color">{{iconName}}</i>
+    <i class="material-icons-outlined custom-icon-color">{{ iconName }}</i>
   </div>
-  <p class="text-gray-700 font-medium">{{text}}</p>
+  <p class="text-gray-700 font-medium">{{ text }}</p>
 </div>

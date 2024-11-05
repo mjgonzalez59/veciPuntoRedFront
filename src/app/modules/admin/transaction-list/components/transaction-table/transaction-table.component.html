@@ -1,38 +1,37 @@
 <div class="container mx-auto p-6 grid items-start">
   <div class="space-y-6">
-    <h2 class="text-2xl font-semibold text-gray-900">Tus transacciones</h2>
+    <div class="text-3xl font-semibold text-purple-700">Tus transacciones</div>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full">
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
       <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <th mat-header-cell *matHeaderCellDef class="text-purple-700">No.</th>
         <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
       </ng-container>
 
-      <!-- Position Column -->
       <ng-container matColumnDef="cellPhone">
-        <th mat-header-cell *matHeaderCellDef>Número de celular</th>
+        <th mat-header-cell *matHeaderCellDef class="text-purple-700">
+          Número de celular
+        </th>
         <td mat-cell *matCellDef="let element">{{ element.cellPhone }}</td>
       </ng-container>
 
-      <!-- Name Column -->
       <ng-container matColumnDef="value">
-        <th mat-header-cell *matHeaderCellDef>Valor</th>
+        <th mat-header-cell *matHeaderCellDef class="text-purple-700">Valor</th>
         <td mat-cell *matCellDef="let element">${{ element.value }}</td>
       </ng-container>
 
-      <!-- Weight Column -->
       <ng-container matColumnDef="transactionalID">
-        <th mat-header-cell *matHeaderCellDef>Transactional ID</th>
+        <th mat-header-cell *matHeaderCellDef class="text-purple-700">
+          Transactional ID
+        </th>
         <td mat-cell *matCellDef="let element">
           {{ element.transactionalID }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+        <th mat-header-cell *matHeaderCellDef class="text-purple-700">
+          Acciones
+        </th>
         <td mat-cell *matCellDef="let element; let i = index">
           <button mat-button type="button" (click)="seeTransaction(i)">
             <i class="material-icons-outlined custom-icon-color">visibility</i>
@@ -50,7 +49,7 @@
     <div class="flex justify-end w-full">
       <button
         (click)="goBack()"
-        class="w-1/4 bg-[#8A2BE2] hover:bg-[#8A2BE2]/90 rounded-lg py-3 text-white"
+        class="w-1/4 bg-gradient-to-r from-purple-600 to-cyan-400 rounded-lg py-3 text-white"
       >
         Regresar
       </button>

@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./office.component.scss'],
 })
 export class OfficeComponent implements OnInit {
-
   constructor() {}
 
   ngOnInit() {}

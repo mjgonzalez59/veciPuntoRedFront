@@ -60,7 +60,6 @@ export class TopUpComponent implements OnInit {
               'Recarga Exitosa',
               `TransactionalID: ${response.transactionalID}`
             );
-            // this.initilizeForm();
           },
           (error) =>
             console.error('TopUpComponent in method getSuppliers failed', error)
