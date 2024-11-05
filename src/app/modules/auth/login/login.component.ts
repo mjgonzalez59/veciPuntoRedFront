@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { DialogService } from 'src/app/core/services/dialog.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _authService: AuthenticationService,
-    private _router: Router
+    private _router: Router,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit() {
@@ -32,6 +34,11 @@ export class LoginComponent implements OnInit {
           this._router.navigate(['/services']);
         },
         (error) => console.error('Login failed', error)
+      );
+    } else {
+      this.dialogService.openDialog(
+        'Cuidado',
+        'Hay algunos campos que no has diligenciado correctamente'
       );
     }
   }

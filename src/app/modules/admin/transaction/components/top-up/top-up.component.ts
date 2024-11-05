@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/modules/shared/dialog/dialog.component';
 import { TransactionRequest } from 'src/app/core/interfaces/transaction.interface';
+import { DialogService } from 'src/app/core/services/dialog.service';
 
 @Component({
   selector: 'app-top-up',
@@ -20,7 +21,8 @@ export class TopUpComponent implements OnInit {
   constructor(
     private _puntoRed: PuntoRedService,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private dialogService: DialogService
   ) {}
 
   ngOnInit() {
@@ -56,7 +58,7 @@ export class TopUpComponent implements OnInit {
         };
         this._puntoRed.recharge(transaction).subscribe(
           (response) => {
-            this.openDialog(
+            this.dialogService.openDialog(
               'Recarga Exitosa',
               `TransactionalID: ${response.transactionalID}`
             );
@@ -66,23 +68,10 @@ export class TopUpComponent implements OnInit {
         );
       }
     } else {
-      this.openDialog(
+      this.dialogService.openDialog(
         'Cuidado',
         'Hay algunos campos que no has diligenciado correctamente'
       );
     }
-  }
-
-  openDialog(title: string, body: string): void {
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: {
-        title: title,
-        content: body,
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('El diálogo se cerró');
-    });
   }
 }
