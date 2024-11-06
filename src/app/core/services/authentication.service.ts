@@ -7,18 +7,19 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  private apiUrl =
-    'https://us-central1-puntored-dev.cloudfunctions.net/technicalTest-developer/api';
-
+  private apiUrl = 'http://localhost:8080/api';
   private authStatus = new BehaviorSubject<boolean>(this.isLoggedIn());
   authStatus$ = this.authStatus.asObservable();
 
   constructor(private http: HttpClient) {}
 
   login(credentials: { user: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/auth`, credentials).pipe(
-      tap((response: any) => {
-        localStorage.setItem('authToken', response.token);
+    return this.http.get(`${this.apiUrl}/login`, { observe: 'response' }).pipe(
+      tap(() => {
+        localStorage.setItem(
+          'authToken',
+          'mtrQF6Q11eosqyQnkMY0JGFbGqcxVg5icvfVnX1i'
+        );
         this.authStatus.next(true);
       })
     );

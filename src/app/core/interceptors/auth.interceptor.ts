@@ -15,13 +15,13 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const apiKey =
-      'mtrQF6Q11eosqyQnkMY0JGFbGqcxVg5icvfVnX1ifIyWDvwGApJ8WUM8nHVrdSkN';
+    const username = localStorage.getItem('username');
+    const password = localStorage.getItem('password');
+    const basicAuth = 'Basic ' + btoa(`${username}:${password}`);
 
     const clonedRequest = request.clone({
       setHeaders: {
-        'x-api-key': apiKey,
-        Authorization: 'Bearer e8797850-95bb-4ca1-ac52-c99dd3c3cbad',
+        Authorization: basicAuth,
       },
     });
     return next.handle(clonedRequest);

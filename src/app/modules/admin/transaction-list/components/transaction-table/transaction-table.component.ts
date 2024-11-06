@@ -1,27 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TransactionResponse } from 'src/app/core/interfaces/transaction.interface';
-
-const ELEMENT_DATA: TransactionResponse[] = [
-  {
-    message: 'Recarga exitosa',
-    transactionalID: 'eea7288b-d00f-490c-9497-6c24d7eaf208',
-    cellPhone: '11111111111',
-    value: 1000,
-  },
-  {
-    message: 'Recarga exitosa',
-    transactionalID: 'eea7288b-d00f-490c-9497-6Fc24d7eaf208',
-    cellPhone: '222222222',
-    value: 1000,
-  },
-  {
-    message: 'Recarga exitosa',
-    transactionalID: 'eea7288b-d00f-490c-9497-6c24d7eaf208',
-    cellPhone: '33333333333',
-    value: 1000,
-  },
-];
+import { PuntoRedService } from 'src/app/core/services/punto-red.service';
 
 @Component({
   selector: 'app-transaction-table',
@@ -36,14 +16,23 @@ export class TransactionTableComponent implements OnInit {
     'transactionalID',
     'actions',
   ];
-  dataSource = ELEMENT_DATA;
+  dataSource: TransactionResponse[];
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router, private _puntoRed: PuntoRedService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._puntoRed.getAllTransactions().subscribe(
+      (response) => {
+        this.dataSource = response;
+      },
+      (error) =>
+        console.error('TransactionTableComponent in method ngOnInit failed', error)
+    );
+  }
 
   seeTransaction(index: number) {
-    this._router.navigate([`/transactions/view/${index}`]);
+    const transactionId = this.dataSource[index].transactionalId;
+    this._router.navigate([`/transactions/view/${transactionId}`]);
   }
 
   goBack() {

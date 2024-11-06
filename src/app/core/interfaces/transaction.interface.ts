@@ -5,8 +5,7 @@ export interface TransactionRequest {
 }
 
 export interface TransactionResponse {
-  message: string;
-  transactionalID: string;
-  cellPhone: string;
+  transactionalId: string;
+  phoneNumber: string;
   value: number;
 }

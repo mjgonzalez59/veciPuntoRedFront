@@ -3,9 +3,9 @@ import { PuntoRedService } from 'src/app/core/services/punto-red.service';
 import * as TransactionConstants from 'src/app/core/constants/transaction.constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/modules/shared/dialog/dialog.component';
 import { TransactionRequest } from 'src/app/core/interfaces/transaction.interface';
 import { DialogService } from 'src/app/core/services/dialog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-up',
@@ -22,7 +22,8 @@ export class TopUpComponent implements OnInit {
     private _puntoRed: PuntoRedService,
     private fb: FormBuilder,
     public dialog: MatDialog,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private _router: Router
   ) {}
 
   ngOnInit() {
@@ -62,6 +63,7 @@ export class TopUpComponent implements OnInit {
               'Recarga Exitosa',
               `TransactionalID: ${response.transactionalID}`
             );
+            this._router.navigate(['/transactions']);
           },
           (error) =>
             console.error('TopUpComponent in method getSuppliers failed', error)

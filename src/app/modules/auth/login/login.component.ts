@@ -28,10 +28,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
+      const { user, password } = this.loginForm.value;
+      localStorage.setItem('username', user);
+      localStorage.setItem('password', password);
       this._authService.login(this.loginForm.value).subscribe(
-        (success) => {
-          console.log('Login successful', success);
-          this._router.navigate(['/services']);
+        (response) => {
+          if (response.status === 200) {
+            this._router.navigate(['/services']);
+          } else {
+            console.error('Login failed');
+            localStorage.removeItem('username');
+            localStorage.removeItem('password');
+          }
         },
         (error) => console.error('Login failed', error)
       );
